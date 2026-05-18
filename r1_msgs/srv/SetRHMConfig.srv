@@ -1,0 +1,12 @@
+# SetRHMConfig.srv
+# One service is registered per device at: /r1/glove{device_id}/{lh|rh}/rhm_config
+#
+# To query:  ros2 service call /r1/glove0/rh/rhm_config r1_msgs/srv/SetRHMConfig "{config_name: ''}"
+# To assign: ros2 service call /r1/glove0/rh/rhm_config r1_msgs/srv/SetRHMConfig "{config_name: 'Seed'}"
+
+string config_name
+---
+bool success
+string message
+string[] available_configs
+string current_config

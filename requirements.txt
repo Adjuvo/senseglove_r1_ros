@@ -1,0 +1,8 @@
+PySide6
+scipy
+setuptools
+wheel
+colcon-common-extensions
+catkin_pkg
+empy
+lark
