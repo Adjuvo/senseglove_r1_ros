@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
     <name>r1_interaction</name>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <description> Python Package for R1 Manager, Haptics and others </description>
     <maintainer email="akshay@senseglove.com">Akshay Radhamohan Menon</maintainer>
     <license>MIT</license>
@@ -13,6 +13,7 @@
     <!-- runtime dependencies -->
     <exec_depend>rclpy</exec_depend>
     <exec_depend>std_msgs</exec_depend>
+    <exec_depend>std_srvs</exec_depend>
     <exec_depend>r1_msgs</exec_depend>
 
     <!-- Testing (pytest - optional) -->

@@ -14,7 +14,6 @@ setup(
     license='MIT',
     packages=[
         package_name,
-        f'{package_name}.configs.robot_hand_mapper',
         f'{package_name}.haptics',
         f'{package_name}.main',
     ],
@@ -25,12 +24,14 @@ setup(
         'std_msgs',
         'r1_msgs',
         'SG_API',
+        'touchlab-comm-py',
     ],
     zip_safe=True,
     entry_points={
         'console_scripts': [
             # haptics
             'force_slider_node = r1_interaction.haptics.force_slider:main',
+            'touchlab_haptic_node = r1_interaction.haptics.touchlab_haptic_controller:main',
             # main
             'r1_manager = r1_interaction.main.r1_manager:main',
         ],

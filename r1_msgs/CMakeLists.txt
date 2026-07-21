@@ -26,7 +26,6 @@ find_package(builtin_interfaces REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/R1GloveState.msg"
   "msg/R1ForceCommands.msg"
-  "srv/SetRHMConfig.srv"
   DEPENDENCIES std_msgs geometry_msgs trajectory_msgs builtin_interfaces
 )
 
