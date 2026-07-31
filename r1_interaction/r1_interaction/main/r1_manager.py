@@ -133,27 +133,9 @@ class R1Manager(Node):
         # Finger distances: thumb to [index, middle, ring, pinky]
         state_msg.finger_distances = [float(x) for x in SG_main.get_fingertip_distances(device_id)]
 
-        joint_distances_array = np.array(SG_main.get_thumb_to_finger_joint_distances(device_id))
-        joint_distances_msg = Float64MultiArray()
-        joint_distances_msg.layout = MultiArrayLayout(
-            dim=[
-                MultiArrayDimension(label='fingers', size=joint_distances_array.shape[0], stride=joint_distances_array.size),
-                MultiArrayDimension(label='joints',  size=joint_distances_array.shape[1], stride=joint_distances_array.shape[1]),
-            ],
-            data_offset=0
-        )
-        joint_distances_msg.data = joint_distances_array.flatten().tolist()
-        state_msg.finger_joint_distances = joint_distances_msg
-
         # Percentage Bent (0-10000)
         flexion_perc_bents, abduction_perc_bents = SG_main.get_percentage_bents(device_id)
         state_msg.percentage_bents = [float(x) for x in [*flexion_perc_bents, *abduction_perc_bents]]
-
-        # Proximal-only Percentage Bent / clawing feature (0-10000)
-        state_msg.percentage_bent_proximal = [float(x) for x in SG_main.get_percentage_bent_proximal(device_id)]
-
-        # Distal-only Percentage Bent / clawing feature (0-10000)
-        state_msg.percentage_bent_distal = [float(x) for x in SG_main.get_percentage_bent_distal(device_id)]
 
         # Sensed forces (thumb, index, middle, ring)
         state_msg.sensed_forces = [float(x) for x in SG_main.get_forces_sensed(device_id)]

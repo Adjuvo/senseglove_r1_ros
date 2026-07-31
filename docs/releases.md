@@ -1,5 +1,10 @@
 # Releases
 
+# v0.0.3
+
+- Removed exposing some data; waiting till we get a release from python api
+
+
 # v0.0.2
 
 - Removed RobotHandMapper (RHM): pinch configs (Seed, DG5F left/right), `SetRHMConfig` service, RHM GUI params, and docs
