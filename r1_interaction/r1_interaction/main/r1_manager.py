@@ -129,6 +129,8 @@ class R1Manager(Node):
         finger_tip_pos, finger_tip_rot = SG_main.get_fingertips_pos_rot(device_id)
         state_msg.finger_tip_positions = [Point(x=p[0], y=p[1], z=p[2]) for p in finger_tip_pos]
         state_msg.finger_tip_orientations = [Quaternion(x=q[0], y=q[1], z=q[2], w=q[3]) for q in finger_tip_rot]
+        state_msg.finger_flex_angles = [float(x) for x in SG_main.get_fingertip_angles_local(device_id)[0]]
+        state_msg.finger_abd_angles = [float(x) for x in SG_main.get_fingertip_angles_local(device_id)[1]]
 
         # Finger distances: thumb to [index, middle, ring, pinky]
         state_msg.finger_distances = [float(x) for x in SG_main.get_fingertip_distances(device_id)]

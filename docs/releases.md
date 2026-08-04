@@ -1,9 +1,12 @@
 # Releases
 
+# v0.0.4
+
+- Added local fingertip angles
+
 # v0.0.3
 
 - Removed exposing some data; waiting till we get a release from python api
-
 
 # v0.0.2
 

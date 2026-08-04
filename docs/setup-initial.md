@@ -46,10 +46,10 @@ pip install -r rembrandt_ros/requirements.txt
 
 ```bash
 cd ~/r1_ws/src/rembrandt-api
-pip install -e .
+pip install .
 ```
 
-**6. Build**
+**6. Build for ROS**
 
 ```bash
 cd ~/r1_ws
@@ -65,4 +65,12 @@ To allow non-root USB access to the R1 glove:
 echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="2e8a", ATTR{idProduct}=="10f3", MODE="0666"' \
   | sudo tee /etc/udev/rules.d/99-r1-glove.rules
 sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+
+
+## Quick non-ROS test
+Quick non-ROS test the glove
+```bash
+source ~/r1_ws/.venv/bin/activate
+python ~/r1_ws/src/rembrandt-api/examples/main_example.py
 ```

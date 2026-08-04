@@ -37,12 +37,15 @@ ros2 launch r1_bringup r1.launch.py use_simulation:=true
 
 
 | Field | Type | Description |
+
 |:---                                   |:---                           |:---                                                                                               |
 | `header`                              | `std_msgs/Header`             | Timestamp                                                                                         |
 | `finger_names`                        | `string[]`                    | Ordered finger labels                                                                             |
 | `joint_angles`                        | `Float64MultiArray`           | Joint angles `[rad]`, shape `[fingers × joints]`                                                  |
 | `finger_tip_positions`                | `geometry_msgs/Point[]`       | Fingertip positions w.r.t the finger base origin `[mm]`                                           |
 | `finger_tip_orientations`             | `geometry_msgs/Quaternion[]`  | Fingertip orientations w.r.t the finger base origin                                               |
+| `finger_flex_angles`                  | `float64[]`                   | Fingertip flex_angles  local. Straight = 0, towards palm is positive.                             |
+| `finger_abd_angles`                   | `float64[]`                   | Fingertip abduction angle local (splay). Straight = 0.Towards thumb is positive.                  |
 | `finger_distances`                    | `float64[]`                   | Thumb-to-`[index, middle, ring, pinky]` tip distances `[mm]`                                      |
 | `finger_joint_distances`              | `Float64MultiArray`           | Thumb-tip-to-`[MCP, PIP, DIP, FINGERTIP]` distances per finger `[mm]`, shape `[fingers x joints]` |
 | `percentage_bents`                    | `float64[]`                   | Flexion + abduction `[0-10000]` - `[Flex (Thumb-to-Pinky), abd (Thumb-to-Pinky)]`                 |
@@ -57,4 +60,6 @@ ros2 launch r1_bringup r1.launch.py use_simulation:=true
 
 | Field             | Type      | Description                               |
 |:---               |:---       |:---                                       |
-| `force_values`    | `int32[]` | Target force per actuated finger `[mN]`   |
+| `force_values`    | `int32[]` | Target force per actuated finger `[thumb mN, index mN, middle mN, ring mN]`   |
+
+
