@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.pyc
+.pytest_cache/
 
 # VS Code settings
 .vscode/
@@ -10,3 +11,11 @@ __pycache__/
 *.patch
 
 logs
+
+# Token files (never commit!)
+tokens/
+*.tok
+
+# Token files (never commit!)
+tokens/
+*.tok

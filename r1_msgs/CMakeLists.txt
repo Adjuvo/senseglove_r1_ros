@@ -3,11 +3,11 @@
 cmake_minimum_required(VERSION 3.16...3.25)
 
 project(r1_msgs
-        VERSION 0.0.1
+        VERSION 0.1.0
         DESCRIPTION "Custom msg types for R1"
         HOMEPAGE_URL "https://senseglove.com"
         LANGUAGES C CXX
-        )
+)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)

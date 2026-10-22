@@ -13,11 +13,6 @@ geometry_msgs/Point[] finger_tip_positions
 # Fingertip orientations as unit quaternions (x, y, z, w)
 geometry_msgs/Quaternion[] finger_tip_orientations
 
-# Fingertip flex_angle local. Straight = 0, towards palm is positive.
-float64[] finger_flex_angles
-# Fingertip abd_angle local. towards thumb is positive.
-float64[] finger_abd_angles
-
 # Euclidean distances from the thumb tip to each other fingertip [index, middle, ring, pinky] [mm]
 float64[] finger_distances
 
@@ -29,16 +24,6 @@ std_msgs/Float64MultiArray finger_joint_distances
 # [flexion_thumb, flexion_index, flexion_middle, flexion_ring, flexion_pinky,
 # abduction_thumb, abduction_index, abduction_middle, abduction_ring, abduction_pinky] Range: [0-10000]
 float64[] percentage_bents
-
-# Proximal-only flexion Percentage Bent (clawing feature)
-# Sums the angles of joint 1 through joint 3, instead of the whole finger
-# [thumb, index, middle, ring, pinky] Range: [0-10000]
-float64[] percentage_bent_proximal
-
-# Distal-only flexion Percentage Bent (clawing feature)
-# Sums the angles of joint 5 through the fingertip only, instead of the whole finger
-# [thumb, index, middle, ring, pinky] Range: [0-10000]
-float64[] percentage_bent_distal
 
 # Currently sensed forces for each finger [thumb, index, middle, ring] [mN]
 float64[] sensed_forces

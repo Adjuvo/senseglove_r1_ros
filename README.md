@@ -11,16 +11,16 @@ See **[Initial Setup](docs/setup-initial.md)** for workspace setup, installing d
 
 ```bash
 # Real hardware, 1 glove (default)
-ros2 launch r1_bringup r1.launch.py
+ros2 launch r1_ros r1.launch.py
 
 # Real hardware, 2 gloves
-ros2 launch r1_bringup r1.launch.py num_gloves:=2
+ros2 launch r1_ros r1.launch.py num_gloves:=2
 
 # Simulation mode
-ros2 launch r1_bringup r1.launch.py use_simulation:=true
+ros2 launch r1_ros r1.launch.py use_simulation:=true
 ```
 > [!NOTE]
-> The r1_manager node can be run standalone as well: `ros2 run r1_interaction r1_manager`
+> The r1_manager node can be run standalone as well: `ros2 run r1_ros r1_manager`
 
 ### Launch Arguments
 
@@ -32,30 +32,25 @@ ros2 launch r1_bringup r1.launch.py use_simulation:=true
 
 ## Topics
 
-![Publisher](https://img.shields.io/badge/Publisher-/r1/glove{id}/{lh|rh}/glove_states-blue?style=flat-square)
+![Publisher](https://img.shields.io/badge/Publisher-/r1/glove{id}/glove_states-blue?style=flat-square)
 ![Type](https://img.shields.io/badge/Type-r1_msgs/R1GloveState-orange?style=flat-square)
 
 
 | Field | Type | Description |
-
 |:---                                   |:---                           |:---                                                                                               |
 | `header`                              | `std_msgs/Header`             | Timestamp                                                                                         |
 | `finger_names`                        | `string[]`                    | Ordered finger labels                                                                             |
 | `joint_angles`                        | `Float64MultiArray`           | Joint angles `[rad]`, shape `[fingers × joints]`                                                  |
 | `finger_tip_positions`                | `geometry_msgs/Point[]`       | Fingertip positions w.r.t the finger base origin `[mm]`                                           |
 | `finger_tip_orientations`             | `geometry_msgs/Quaternion[]`  | Fingertip orientations w.r.t the finger base origin                                               |
-| `finger_flex_angles`                  | `float64[]`                   | Fingertip flex_angles  local. Straight = 0, towards palm is positive.                             |
-| `finger_abd_angles`                   | `float64[]`                   | Fingertip abduction angle local (splay). Straight = 0.Towards thumb is positive.                  |
-| `finger_distances`                    | `float64[]`                   | Thumb-to-`[index, middle, ring, pinky]` tip distances `[mm]`                                      |
+| `finger_distances`                    | `float64[]`                   | Thumb-to-`[index, middle, ring, pinky]` tip distances `[mm]                                       |
 | `finger_joint_distances`              | `Float64MultiArray`           | Thumb-tip-to-`[MCP, PIP, DIP, FINGERTIP]` distances per finger `[mm]`, shape `[fingers x joints]` |
 | `percentage_bents`                    | `float64[]`                   | Flexion + abduction `[0-10000]` - `[Flex (Thumb-to-Pinky), abd (Thumb-to-Pinky)]`                 |
-| `percentage_bent_proximal`            | `float64[]`                   | Proximal-only flexion (clawing) `[0-10000]` - `[Thumb-to-Pinky]`                                  |
-| `percentage_bent_distal`              | `float64[]`                   | Distal-only flexion (clawing) `[0-10000]` - `[Thumb-to-Pinky]`                                    |
 | `sensed_forces`                       | `float64[]`                   | Sensed forces for `[thumb, index, middle, ring]` `[mN]`                                           |
 
 ### Force Commands
 
-![Subscriber](https://img.shields.io/badge/Subscriber-/r1/glove{id}/{lh|rh}/force_commands-blue?style=flat-square)
+![Subscriber](https://img.shields.io/badge/Subscriber-/r1/glove{id}/force_commands-blue?style=flat-square)
 ![Type](https://img.shields.io/badge/Type-r1_msgs/R1ForceCommands-orange?style=flat-square)
 
 | Field             | Type      | Description                               |

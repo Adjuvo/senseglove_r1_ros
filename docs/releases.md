@@ -1,12 +1,12 @@
 # Releases
 
-# v0.0.4
-
-- Added local fingertip angles
-
-# v0.0.3
-
-- Removed exposing some data; waiting till we get a release from python api
+# v0.1.0
+- Reorganized `r1_interaction`/`r1_bringup` into a single `r1_ros` package
+- `r1_manager` now stamps every `R1GloveState` with `header.stamp` and `finger_names`
+- Removed handedness (`lh`/`rh`) from topics
+- Added a `use_filter` launch parameter to toggle the SUSPICION tracking filter (0.25 EWMA smoothing)
+- Split `r1_pro_ros` version
+- Added unit test suites
 
 # v0.0.2
 
