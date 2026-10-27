@@ -1,5 +1,8 @@
 # Releases
 
+# v0.1.1
+- ROS-param: "DeviceID:handedness" pair for connected gloves
+
 # v0.1.0
 - Reorganized `r1_interaction`/`r1_bringup` into a single `r1_ros` package
 - `r1_manager` now stamps every `R1GloveState` with `header.stamp` and `finger_names`
