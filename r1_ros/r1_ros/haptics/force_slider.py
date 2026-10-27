@@ -97,7 +97,7 @@ class ForceSliderGUI(Node):
         self._build_ui()
 
     def _fetch_device_id_from_r1_manager(self) -> int:
-        """When device_id isn't passed explicitly, reads r1_manager's live r1_glove_device_ids param."""
+        """When device_id isn't passed explicitly, reads r1_manager's live r1_device_ids param."""
         client = self.create_client(GetParameters, '/r1_manager/get_parameters')
         if not client.wait_for_service(timeout_sec=5.0):
             raise RuntimeError(
@@ -109,10 +109,11 @@ class ForceSliderGUI(Node):
         result = future.result()
         if result is None:
             raise RuntimeError("Timed out querying r1_manager for r1_device_ids.")
-        device_ids = result.values[0].integer_array_value
-        if not device_ids:
+        pairs = result.values[0].string_array_value
+        if not pairs:
             raise RuntimeError("r1_manager's r1_device_ids param is empty.")
-        return device_ids[0]
+        device_id_str, _, _ = pairs[0].partition(':')
+        return int(device_id_str)
 
     def _build_ui(self):
         self.root = tk.Tk()

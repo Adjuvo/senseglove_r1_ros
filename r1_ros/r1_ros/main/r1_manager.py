@@ -53,13 +53,6 @@ class R1Manager(Node):
         device_ids = SG_main.init(num_gloves, com_type)
         self.get_logger().info(f"SG_main.init() returned device IDs: {device_ids}")
 
-        # Declare the device IDs as a ROS parameter
-        self.declare_parameter(
-            'r1_device_ids',
-            device_ids,
-            ParameterDescriptor(type=ParameterType.PARAMETER_INTEGER_ARRAY),
-        )
-
         # QoS
         if use_best_effort_qos:
             qos = QoSProfile(
@@ -111,6 +104,14 @@ class R1Manager(Node):
             self.get_logger().info(f"Initialized R1 [{handedness_str}] device_id={device_id}")
 
         self._device_map: dict[int, dict] = {d['device_id']: d for d in self._devices}
+
+        # Device ID: handedness parameter
+        device_id_pairs = [f"{d['device_id']}:{d['handedness']}" for d in self._devices]
+        self.declare_parameter(
+            'r1_device_ids',
+            device_id_pairs,
+            ParameterDescriptor(type=ParameterType.PARAMETER_STRING_ARRAY),
+        )
 
         self._shutting_down = False
         SG_main.subscr_r1_data_callback(self._on_new_data)

@@ -28,6 +28,7 @@ ros2 launch r1_ros r1.launch.py use_simulation:=true
 |:---                       |:---       |:---                                       |
 | `num_gloves`              | `1`       | Number of gloves to connect               |
 | `use_simulation`          | `false`   | Run in simulation mode without hardware   |
+| `use_filter`              | `false`   | Jitter Filter for older older prototypes  |
 
 
 ## Topics
